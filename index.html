@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NextGen Sellers — Innovation Showcase Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B3A5C;
+    --teal: #007B7F;
+    --teal-light: #009B9F;
+    --orange: #E87722;
+    --orange-light: #F5A043;
+    --white: #FFFFFF;
+    --off-white: #F7F9FA;
+    --light-teal: #E4F4F4;
+    --light-navy: #EEF2F7;
+    --gray-100: #F5F5F5;
+    --gray-200: #E8E8E8;
+    --gray-400: #999999;
+    --gray-600: #555555;
+    --gray-800: #222222;
+    --sticky-1: #FFF59D;
+    --sticky-2: #B3E5FC;
+    --sticky-3: #C8E6C9;
+    --sticky-4: #FFCCBC;
+    --board-width: 900px;
+    --font-display: 'Sora', sans-serif;
+    --font-body: 'Noto Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #D8DDE3;
+    font-family: var(--font-body);
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .board {
+    width: var(--board-width);
+    background: var(--white);
+    box-shadow: 0 8px 48px rgba(0,0,0,0.18);
+  }
+
+  /* ── BOARD HEADER ── */
+  .board-header {
+    background: var(--navy);
+    padding: 48px 52px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .board-header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(0,123,127,0.18);
+  }
+  .board-header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 200px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(232,119,34,0.12);
+  }
+  .board-eyebrow {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--teal-light);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .board-title {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.2;
+    max-width: 600px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .board-title span { color: var(--orange-light); }
+  .board-subtitle {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.62);
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 520px;
+    position: relative;
+    z-index: 1;
+  }
+  .board-meta {
+    margin-top: 24px;
+    display: flex;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .board-meta-chip {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.75);
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── BLOCK CONNECTOR ── */
+  .block-connector {
+    display: flex;
+    align-items: center;
+    padding: 0 52px;
+    height: 44px;
+    background: var(--white);
+    position: relative;
+  }
+  .block-connector-line {
+    position: absolute;
+    left: 79px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--teal), rgba(0,123,127,0.15));
+  }
+  .block-connector-arrow {
+    position: absolute;
+    left: 72px;
+    bottom: 2px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 9px solid rgba(0,123,127,0.3);
+  }
+  .block-connector-label {
+    margin-left: 54px;
+    font-size: 10.5px;
+    color: var(--teal);
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.65;
+  }
+
+  /* ── BLOCK BASE ── */
+  .block {
+    padding: 0 52px 48px;
+    position: relative;
+  }
+  .block-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 28px 0 22px;
+    border-bottom: 1px solid var(--gray-200);
+    margin-bottom: 28px;
+  }
+  .block-number {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: var(--navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    margin-top: 3px;
+  }
+  .block-number.teal { background: var(--teal); }
+  .block-number.orange { background: var(--orange); }
+  .block-title-group {}
+  .block-label {
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 5px;
+  }
+  .block-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+  .block-title.orange-accent span { color: var(--orange); }
+
+  /* ── BLOCK 1: STATS GRID ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .stat-card {
+    background: var(--light-navy);
+    border-top: 3px solid var(--navy);
+    border-radius: 4px;
+    padding: 20px 18px 16px;
+  }
+  .stat-card.teal { border-top-color: var(--teal); background: var(--light-teal); }
+  .stat-card.orange { border-top-color: var(--orange); background: #FEF4EC; }
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-card.teal .stat-number { color: var(--teal); }
+  .stat-card.orange .stat-number { color: var(--orange); }
+  .stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-600);
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+  .stat-source {
+    font-size: 10px;
+    color: var(--gray-400);
+    font-style: italic;
+  }
+
+  /* ── INSIGHT BOX ── */
+  .insight-box {
+    background: var(--off-white);
+    border-left: 4px solid var(--teal);
+    border-radius: 0 6px 6px 0;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--gray-800);
+  }
+  .insight-box strong { color: var(--navy); }
+  .insight-box.orange-accent { border-left-color: var(--orange); }
+  .insight-box.navy { background: var(--light-navy); border-left-color: var(--navy); }
+
+  /* ── FORK VISUAL (Block 2) ── */
+  .fork-visual {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: start;
+    gap: 0;
+    margin: 24px 0;
+  }
+  .fork-left, .fork-right {
+    padding: 22px 20px;
+    border-radius: 6px;
+    text-align: center;
+  }
+  .fork-left {
+    background: var(--light-teal);
+    border: 2px solid var(--teal);
+  }
+  .fork-right {
+    background: #FEF4EC;
+    border: 2px solid var(--orange);
+  }
+  .fork-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    padding-top: 30px;
+    gap: 6px;
+  }
+  .fork-vs {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gray-400);
+    text-transform: uppercase;
+  }
+  .fork-pct {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .fork-pct.teal { color: var(--teal); }
+  .fork-pct.orange { color: var(--orange); }
+  .fork-desc {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-600);
+    line-height: 1.4;
+  }
+  .fork-sub {
+    font-size: 11px;
+    color: var(--gray-400);
+    margin-top: 6px;
+  }
+
+  /* ── WAGE GAP VISUAL (Block 3) ── */
+  .wage-bar-row {
+    margin: 20px 0 8px;
+  }
+  .wage-bar-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-600);
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .wage-bar-label span {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--navy);
+  }
+  .wage-bar-track {
+    height: 28px;
+    background: var(--gray-200);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .wage-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+    font-family: var(--font-display);
+  }
+  .wage-bar-fill.minimum { background: var(--orange); width: 43%; }
+  .wage-bar-fill.living { background: var(--teal); width: 77%; }
+  .wage-bar-fill.degree { background: var(--navy); width: 89%; }
+  .wage-caption {
+    font-size: 11px;
+    color: var(--gray-400);
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  /* ── BLOCK 4 SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .skill-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    padding: 18px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--teal);
+  }
+  .skill-card.orange::before { background: var(--orange); }
+  .skill-big {
+    font-family: var(--font-display);
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--teal);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .skill-card.orange .skill-big { color: var(--orange); }
+  .skill-desc {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--gray-600);
+    font-weight: 400;
+  }
+  .skill-desc strong { color: var(--navy); font-weight: 600; }
+  .skill-source {
+    font-size: 10px;
+    color: var(--gray-400);
+    font-style: italic;
+    margin-top: 6px;
+  }
+
+  /* ── BLOCK 5: PROGRAMME + PARTICIPANTS ── */
+  .programme-model {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 20px 0;
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .model-step {
+    padding: 18px 16px;
+    text-align: center;
+    position: relative;
+  }
+  .model-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--teal);
+    font-weight: 700;
+    font-size: 16px;
+    z-index: 1;
+  }
+  .model-step:nth-child(1) { background: var(--light-teal); }
+  .model-step:nth-child(2) { background: var(--light-navy); }
+  .model-step:nth-child(3) { background: #FEF4EC; }
+  .model-step-num {
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 6px;
+  }
+  .model-step:nth-child(2) .model-step-num { color: var(--navy); }
+  .model-step:nth-child(3) .model-step-num { color: var(--orange); }
+  .model-step-title {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .model-step-desc {
+    font-size: 11px;
+    color: var(--gray-600);
+    line-height: 1.4;
+  }
+
+  .cohort-intro {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 24px 0 14px;
+    font-family: var(--font-display);
+  }
+
+  .participant-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .participant-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .participant-card-header {
+    background: var(--navy);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .participant-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.25);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+  .participant-name {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+  }
+  .participant-meta {
+    font-size: 10.5px;
+    color: rgba(255,255,255,0.55);
+  }
+  .participant-card-body {
+    padding: 12px 14px;
+    background: var(--white);
+  }
+  .participant-tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 8px;
+  }
+  .p-tag {
+    background: var(--light-teal);
+    color: var(--teal);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-family: var(--font-display);
+  }
+  .p-tag.orange { background: #FEF4EC; color: var(--orange); }
+  .participant-story {
+    font-size: 11.5px;
+    color: var(--gray-600);
+    line-height: 1.55;
+  }
+  .participant-card.fifth {
+    grid-column: 1 / -1;
+  }
+  .participant-card.fifth .participant-card-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  /* Employer placeholder */
+  .employer-placeholder {
+    border: 2px dashed var(--gray-400);
+    border-radius: 6px;
+    padding: 18px 20px;
+    text-align: center;
+    background: var(--gray-100);
+    margin: 16px 0;
+  }
+  .employer-placeholder-label {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .employer-placeholder-text {
+    font-size: 12px;
+    color: var(--gray-400);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* ── BLOCK 6: MULTIPLIER + STICKY ZONE ── */
+  .multiplier-stat {
+    background: var(--navy);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .multiplier-number {
+    font-family: var(--font-display);
+    font-size: 56px;
+    font-weight: 800;
+    color: var(--orange-light);
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .multiplier-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.80);
+    line-height: 1.6;
+  }
+  .multiplier-text strong {
+    color: white;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 6px;
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+
+  /* ── STICKY NOTE ZONE ── */
+  .sticky-zone-header {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .sticky-zone-subtext {
+    font-size: 12px;
+    color: var(--gray-600);
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+  .sticky-questions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .sticky-question-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .sticky-question-text {
+    background: var(--light-navy);
+    border-left: 3px solid var(--navy);
+    padding: 11px 14px;
+    border-radius: 0 6px 6px 0;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.5;
+    font-family: var(--font-display);
+  }
+  .sticky-question-text .q-num {
+    display: inline-block;
+    background: var(--navy);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 18px;
+    margin-right: 8px;
+    font-family: var(--font-display);
+  }
+  .sticky-drop-zone {
+    min-height: 130px;
+    background: #FAFAF5;
+    border: 2px dashed #C8C8B0;
+    border-radius: 4px;
+    position: relative;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-content: flex-start;
+  }
+  .sticky-drop-hint {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    font-size: 10px;
+    color: #AAAAAA;
+    font-style: italic;
+    font-family: var(--font-display);
+  }
+  /* Decorative pre-placed sticky notes */
+  .sticky-note {
+    width: 70px;
+    height: 66px;
+    padding: 8px 6px 6px;
+    font-size: 9.5px;
+    line-height: 1.35;
+    color: #555;
+    font-family: var(--font-body);
+    transform: rotate(-2deg);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.10);
+    flex-shrink: 0;
+  }
+  .sticky-note:nth-child(2) { transform: rotate(1.5deg); }
+  .sticky-note:nth-child(3) { transform: rotate(-1deg); }
+  .sticky-y { background: var(--sticky-1); }
+  .sticky-b { background: var(--sticky-2); }
+  .sticky-g { background: var(--sticky-3); }
+  .sticky-r { background: var(--sticky-4); }
+
+  /* ── FOOTER ── */
+  .board-footer {
+    background: var(--navy);
+    padding: 24px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-left {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.55);
+  }
+  .footer-left strong { color: rgba(255,255,255,0.85); display: block; font-size: 13px; margin-bottom: 2px; }
+  .footer-right {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .footer-partner {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    font-family: var(--font-display);
+  }
+  .footer-partner + .footer-partner {
+    padding-left: 16px;
+    border-left: 1px solid rgba(255,255,255,0.15);
+  }
+
+  /* Data flag */
+  .data-flag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #FFF8E6;
+    border: 1px solid #F5A623;
+    border-radius: 3px;
+    padding: 2px 8px;
+    font-size: 9.5px;
+    font-weight: 700;
+    color: #B87000;
+    font-family: var(--font-display);
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+
+  /* Block-level reaction zone (smaller, for blocks 3 & 4) */
+  .mini-react-zone {
+    margin-top: 20px;
+    border-top: 1px dashed var(--gray-200);
+    padding-top: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .mini-react-prompt {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--teal);
+    font-family: var(--font-display);
+    width: 140px;
+    line-height: 1.4;
+    padding-top: 4px;
+  }
+  .mini-sticky-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+  .mini-sticky {
+    width: 64px;
+    height: 60px;
+    padding: 6px 5px 5px;
+    font-size: 9px;
+    line-height: 1.3;
+    color: #777;
+    box-shadow: 1px 2px 4px rgba(0,0,0,0.08);
+  }
+  .mini-sticky:nth-child(2) { transform: rotate(1.8deg); }
+  .mini-sticky:nth-child(3) { transform: rotate(-1.2deg); }
+</style>
+</head>
+<body>
+
+<div class="board">
+
+  <!-- ═══ BOARD HEADER ═══ -->
+  <div class="board-header">
+    <div class="board-eyebrow">NextGen Sellers · Innovation Showcase Board A</div>
+    <h1 class="board-title">Building Youth Pathways <span>Beyond Minimum Wage</span></h1>
+    <p class="board-subtitle">Why B40 young Malaysians are stuck — and what a structured, employer-linked sales career programme can do about it.</p>
+    <div class="board-meta">
+      <span class="board-meta-chip">Biji-biji Initiative</span>
+      <span class="board-meta-chip">Citi Foundation</span>
+      <span class="board-meta-chip">Cohort 1 · 2025–2026</span>
+    </div>
+  </div>
+
+  <!-- ═══ BLOCK 1 ═══ -->
+  <div class="block-connector">
+    <div class="block-connector-line"></div>
+    <div class="block-connector-arrow"></div>
+  </div>
+
+  <div class="block">
+    <div class="block-header">
+      <div class="block-number">1</div>
+      <div class="block-title-group">
+        <div class="block-label">Scale of the Challenge</div>
+        <h2 class="block-title">Who Are We Talking About?</h2>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-number">9.1M</div>
+        <div class="stat-label">Total households in Malaysia (2024)</div>
+        <div class="stat-source">DOSM Household Income Survey 2024</div>
+      </div>
+      <div class="stat-card teal">
+        <div class="stat-number">3.6M</div>
+        <div class="stat-label">B40 households — bottom 40% earning below RM5,249/month</div>
+        <div class="stat-source">DOSM HIES 2022 benchmark <span class="data-flag">Verify 2024</span></div>
+      </div>
+      <div class="stat-card orange">
+        <div class="stat-number">~1.4M</div>
+        <div class="stat-label">Estimated B40 youth aged 18–24 — the exact window where intervention matters most</div>
+        <div class="stat-source">Derived estimate <span class="data-flag">Verify with DOSM</span></div>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      Malaysia's wage share of national income sits at approximately <strong>33%</strong> — well below the government's own target of 40–45%. For B40 families, essentials like food, housing, transport, and utilities already consume most of their monthly income. The cost of living is rising <strong>faster than wages.</strong>
+      <br><small style="color:#999;font-style:italic;font-size:11px;margin-top:6px;display:block">Source: DOSM Household Expenditure Survey 2024; Bank Muamalat economist commentary</small>
+    </div>
+  </div>
+
+  <!-- ═══ BLOCK 2 ═══ -->
+  <div class="block-connector">
+    <div class="block-connector-line"></div>
+    <div class="block-connector-arrow"></div>
+    <span class="block-connector-label">Because of this ↓</span>
+  </div>
+
+  <div class="block">
+    <div class="block-header">
+      <div class="block-number teal">2</div>
+      <div class="block-title-group">
+        <div class="block-label">The Education Gap</div>
+        <h2 class="block-title">The Post-SPM Fork in the Road</h2>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:#555;line-height:1.65;margin-bottom:20px;">Every year, hundreds of thousands of young Malaysians sit for SPM. After results, they face a choice — but for B40 youth, it is rarely a free one.</p>
+
+    <div class="fork-visual">
+      <div class="fork-left">
+        <div class="fork-pct teal">~51%</div>
+        <div class="fork-desc">Continue to diploma, TVET, or degree</div>
+        <div class="fork-sub">Often with financial burden, PTPTN debt, or deferred entry</div>
+      </div>
+      <div class="fork-divider">
+        <div style="font-size:11px;color:#bbb;font-family:var(--font-display);font-weight:700;letter-spacing:1px;margin-bottom:4px;">SPM</div>
+        <svg width="32" height="48" viewBox="0 0 32 48"><line x1="16" y1="0" x2="16" y2="20" stroke="#ccc" stroke-width="2"/><line x1="16" y1="20" x2="4" y2="36" stroke="#007B7F" stroke-width="2"/><line x1="16" y1="20" x2="28" y2="36" stroke="#E87722" stroke-width="2"/><circle cx="16" cy="20" r="3" fill="#ccc"/></svg>
+      </div>
+      <div class="fork-right">
+        <div class="fork-pct orange">~49%</div>
+        <div class="fork-desc">Enter the workforce directly — often without a plan</div>
+        <div class="fork-sub">Driven by financial need, limited guidance, or academic barriers</div>
+      </div>
+    </div>
+
+    <div class="insight-box orange-accent" style="margin-top:16px;">
+      <strong>2019 DOSM data:</strong> Out of 560,000 SPM candidates, <strong>390,000 (72.1%)</strong> expressed no intention to continue higher education — driven by the need to earn immediately. Parliamentary data from 2021 confirmed <strong>48.74%</strong> of that year's SPM batch did not enrol in further education.
+      <br><small style="color:#999;font-style:italic;font-size:11px;margin-top:6px;display:block">Sources: DOSM 2019 SPM Graduate Report; Dewan Rakyat Hansard 2023. Note: the 72.1% measures intent; 48.74% measures confirmed non-enrolment. Most recent available figure: 2022. <span class="data-flag">Verify 2023–2024 data</span></small>
+    </div>
+
+    <div class="insight-box navy" style="margin-top:12px;">
+      Three primary reasons for not continuing: <strong>immediate income need</strong> (family financial pressure), <strong>cost of tertiary education</strong>, and <strong>lack of structured guidance</strong> at the post-SPM transition. For B40 families, the decision is rarely about ambition. It is about survival timing.
+    </div>
+  </div>
+
+  <!-- ═══ BLOCK 3 ═══ -->
+  <div class="block-connector">
+    <div class="block-connector-line"></div>
+    <div class="block-connector-arrow"></div>
+    <span class="block-connector-label">Which leads to ↓</span>
+  </div>
+
+  <div class="block">
+    <div class="block-header">
+      <div class="block-number">3</div>
+      <div class="block-title-group">
+        <div class="block-label">The Income Reality</div>
+        <h2 class="block-title">The Work Trap</h2>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:#555;line-height:1.65;margin-bottom:20px;">Without qualifications or structured pathways, most B40 youth default to gig work, retail, and F&amp;B. They are earning — but not growing. And what they earn is not enough to live on in urban Malaysia.</p>
+
+    <div class="stats-row" style="grid-template-columns:1fr 1fr;">
+      <div class="stat-card teal">
+        <div class="stat-number">3M+</div>
+        <div class="stat-label">Gig and own-account workers in Malaysia as of Q3 2024</div>
+        <div class="stat-source">DOSM Labour Force Survey Q3 2024</div>
+      </div>
+      <div class="stat-card orange">
+        <div class="stat-number">~40%</div>
+        <div class="stat-label">Of p-hailing youth workers (ages 15–30) hold only an SPM certificate</div>
+        <div class="stat-source">DOSM, cited by Taylor's College 2023</div>
+      </div>
+    </div>
+
+    <div style="margin: 22px 0 6px;">
+      <div style="font-family:var(--font-display);font-size:12px;font-weight:700;color:var(--navy);margin-bottom:14px;letter-spacing:0.5px;">The Wage Gap — What You Earn vs. What You Need</div>
+
+      <div class="wage-bar-row">
+        <div class="wage-bar-label">National Minimum Wage (2025) <span>RM 1,700</span></div>
+        <div class="wage-bar-track"><div class="wage-bar-fill minimum">RM 1,700/month</div></div>
+      </div>
+
+      <div class="wage-bar-row" style="margin-top:10px;">
+        <div class="wage-bar-label">Estimated Living Wage — Klang Valley <span>~RM 3,000</span></div>
+        <div class="wage-bar-track"><div class="wage-bar-fill living">~RM 3,000 (inflation-adjusted) <span class="data-flag" style="color:#fff;background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.3);font-size:9px;">Analyst est.</span></div></div>
+      </div>
+
+      <div class="wage-bar-row" style="margin-top:10px;">
+        <div class="wage-bar-label">Median salary — degree holders (2020 data) <span>RM 3,499</span></div>
+        <div class="wage-bar-track"><div class="wage-bar-fill degree">RM 3,499/month</div></div>
+      </div>
+
+      <p class="wage-caption">Bank Negara Malaysia (2018) identified RM2,700 as the minimum living wage in the Klang Valley. Analysts estimate this figure at RM3,000+ today after inflation. The RM1,700 minimum wage leaves a significant gap for urban B40 youth. Source: Minimum Wages Order 2025; BNM 2018; Aliran 2024. <span class="data-flag">Verify updated BNM living wage</span></p>
+    </div>
+
+    <div class="insight-box" style="margin-top:16px;">
+      <strong>Real story (Utusan Malaysia, August 2025):</strong> A 22-year-old food delivery rider earning RM1,500/month from Grab is also working night shifts at a factory just to cover basic monthly commitments. Gig work without progression is not a career pathway. It is a ceiling.
+    </div>
+
+    <div class="mini-react-zone">
+      <div class="mini-react-prompt">💬 What do you see on the ground that this data doesn't show?</div>
+      <div class="mini-sticky-row">
+        <div class="mini-sticky sticky-y" style="transform:rotate(-2deg)"></div>
+        <div class="mini-sticky sticky-b"></div>
+        <div class="mini-sticky sticky-g" style="transform:rotate(1deg)"></div>
+        <div style="width:64px;height:60px;border:1.5px dashed #ccc;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#bbb;font-style:italic;font-family:var(--font-display);">+ Add</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ BLOCK 4 ═══ -->
+  <div class="block-connector">
+    <div class="block-connector-line"></div>
+    <div class="block-connector-arrow"></div>
+    <span class="block-connector-label">And so ↓</span>
+  </div>
+
+  <div class="block">
+    <div class="block-header">
+      <div class="block-number teal">4</div>
+      <div class="block-title-group">
+        <div class="block-label">The Mismatch</div>
+        <h2 class="block-title">The Skills and Credentials Gap</h2>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:#555;line-height:1.65;margin-bottom:20px;">The jobs that offer real career growth require skills this group was never given structured access to. Employers can't find the right people. Youth can't find the right door.</p>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-big">10.3%</div>
+        <div class="skill-desc"><strong>Youth unemployment rate</strong> (ages 15–24) in 2024 — more than <strong>5× the adult rate</strong> of 1.8%</div>
+        <div class="skill-source">DOSM Annual Labour Force Statistics 2024</div>
+      </div>
+      <div class="skill-card orange">
+        <div class="skill-big">42%</div>
+        <div class="skill-desc">of Malaysian employers reported <strong>difficulty finding candidates with the right skills</strong> in 2023</div>
+        <div class="skill-source">DOSM 2023 survey <span class="data-flag">Verify original source</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-big">70%</div>
+        <div class="skill-desc">of new job openings in 2024 <strong>require digital skills</strong> — yet only 30% of the current workforce has them</div>
+        <div class="skill-source">MDEC Digital Economy Report 2024</div>
+      </div>
+      <div class="skill-card orange">
+        <div class="skill-big">284,700</div>
+        <div class="skill-desc"><strong>Unemployed youth</strong> aged 15–24 in Malaysia in 2024 — a pool of talent without a structured pathway in</div>
+        <div class="skill-source">DOSM Annual Labour Force Statistics 2024</div>
+      </div>
+    </div>
+
+    <div class="insight-box navy">
+      Sales and marketing is one of Malaysia's fastest-growing service sector job categories. But B40 youth have no formal route into it — no mentorship, no certification, and no employer willing to take the first risk. <strong>The gap is structural, not motivational.</strong>
+    </div>
+
+    <div class="mini-react-zone">
+      <div class="mini-react-prompt">💬 What skills do your organisation most struggle to find?</div>
+      <div class="mini-sticky-row">
+        <div class="mini-sticky sticky-r" style="transform:rotate(-1.5deg)"></div>
+        <div class="mini-sticky sticky-y" style="transform:rotate(2deg)"></div>
+        <div class="mini-sticky sticky-b" style="transform:rotate(-0.5deg)"></div>
+        <div style="width:64px;height:60px;border:1.5px dashed #ccc;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#bbb;font-style:italic;font-family:var(--font-display);">+ Add</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ BLOCK 5 ═══ -->
+  <div class="block-connector">
+    <div class="block-connector-line"></div>
+    <div class="block-connector-arrow"></div>
+    <span class="block-connector-label">So we built this ↓</span>
+  </div>
+
+  <div class="block">
+    <div class="block-header">
+      <div class="block-number orange">5</div>
+      <div class="block-title-group">
+        <div class="block-label">The Pilot in Action</div>
+        <h2 class="block-title orange-accent">NextGen Sellers — <span>A Proof of Concept</span></h2>
+      </div>
+    </div>
+
+    <p style="font-size:13px;color:#555;line-height:1.65;margin-bottom:20px;">A structured, employer-linked workforce development programme designed to move B40 youth from the work trap into a sales career — with a career readiness profile they keep for life.</p>
+
+    <div class="programme-model">
+      <div class="model-step">
+        <div class="model-step-num">Phase 01</div>
+        <div class="model-step-title">Self-Paced Learning</div>
+        <div class="model-step-desc">Sales skills, digital literacy, financial literacy, workplace communication via Kajabi platform</div>
+      </div>
+      <div class="model-step">
+        <div class="model-step-num">Phase 02</div>
+        <div class="model-step-title">Bootcamp</div>
+        <div class="model-step-desc">Intensive facilitated training. DISC profiling. English for Sales. Career Readiness Assessment.</div>
+      </div>
+      <div class="model-step">
+        <div class="model-step-num">Phase 03</div>
+        <div class="model-step-title">Employer Placement</div>
+        <div class="model-step-desc">Paid placement with employer partners. Participants protected under PERKESO.</div>
+      </div>
+    </div>
+
+    <div class="employer-placeholder">
+      <div class="employer-placeholder-label">Employer Partners — Pending Confirmation</div>
+      <div class="employer-placeholder-text">How many employers are confirmed? Which sectors? Are any nameable here?<br>Update before printing. Placeholder: "[X] employer partners confirmed across [sectors]."</div>
+    </div>
+
+    <div class="cohort-intro">Cohort 1 — 5 Participants. All B40. All 18–24. All from the work trap.</div>
+
+    <div class="participant-grid">
+
+      <div class="participant-card">
+        <div class="participant-card-header">
+          <div class="participant-avatar">MS</div>
+          <div>
+            <div class="participant-name">Muhammad Syahir</div>
+            <div class="participant-meta">20 · Bandar Tun Razak, KL</div>
+          </div>
+        </div>
+        <div class="participant-card-body">
+          <div class="participant-tag-row">
+            <span class="p-tag">SPM Leaver</span>
+            <span class="p-tag">Gig worker</span>
+            <span class="p-tag orange">Micro-entrepreneur</span>
+          </div>
+          <p class="participant-story">Balances Grab delivery with seasonal businesses (Ramadan bazaar, roadside fireworks). Already handles suppliers, permits, and social media marketing. Here to turn instinct into craft.</p>
+        </div>
+      </div>
+
+      <div class="participant-card">
+        <div class="participant-card-header">
+          <div class="participant-avatar">WA</div>
+          <div>
+            <div class="participant-name">Wan Amir Naqiuddin</div>
+            <div class="participant-meta">24 · Kajang, Selangor</div>
+          </div>
+        </div>
+        <div class="participant-card-body">
+          <div class="participant-tag-row">
+            <span class="p-tag">ASWARA dropout (MCO)</span>
+            <span class="p-tag orange">Hospitality</span>
+          </div>
+          <p class="participant-story">Ex-Grand Hyatt Guest Service Officer. Freelance model and admin. Dropped out of Music Theory studies during the pandemic. Bringing premium hospitality instincts into sales.</p>
+        </div>
+      </div>
+
+      <div class="participant-card">
+        <div class="participant-card-header">
+          <div class="participant-avatar">QA</div>
+          <div>
+            <div class="participant-name">Qaisaratul Ain (Sarah)</div>
+            <div class="participant-meta">18 · Sentul, KL</div>
+          </div>
+        </div>
+        <div class="participant-card-body">
+          <div class="participant-tag-row">
+            <span class="p-tag">SPM incomplete</span>
+            <span class="p-tag orange">Direct sales</span>
+            <span class="p-tag">Freelance bassist</span>
+          </div>
+          <p class="participant-story">"I chose to work even though SPM was near... because money was very important for me to keep living." Sells 30 packs of cookies a day. A natural closer who has been pitching since preschool.</p>
+        </div>
+      </div>
+
+      <div class="participant-card">
+        <div class="participant-card-header">
+          <div class="participant-avatar">AR</div>
+          <div>
+            <div class="participant-name">Aida Rohani Qistina</div>
+            <div class="participant-meta">KL &amp; Kedah</div>
+          </div>
+        </div>
+        <div class="participant-card-body">
+          <div class="participant-tag-row">
+            <span class="p-tag">IPTA dropout (financial)</span>
+            <span class="p-tag orange">Retail 2.5 yrs</span>
+          </div>
+          <p class="participant-story">Dropped out of Early Childhood Education due to financial constraints. Suggested a Ramadan promotion shift that increased kiosk sales. A pattern-spotter recovering and ready.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- P5 full-width -->
+    <div class="participant-card fifth">
+      <div class="participant-card-header">
+        <div class="participant-avatar">GG</div>
+        <div>
+          <div class="participant-name">Gunalan A/L Ganapathy</div>
+          <div class="participant-meta">24 · Mentakab, Pahang &nbsp;|&nbsp; Willing to relocate</div>
+        </div>
+      </div>
+      <div class="participant-card-body">
+        <div>
+          <div class="participant-tag-row">
+            <span class="p-tag">SKM Level 3, Graphic Design</span>
+            <span class="p-tag">NGO youth leader</span>
+            <span class="p-tag orange">Street sales</span>
+          </div>
+          <p class="participant-story">His Pizza Hut manager trusts him to lead street sampling because of his natural ability to close strangers. Ran a home-baking business using his mother's recipes. SPM results weren't enough for academic routes — the vocational path and his own grit brought him here.</p>
+        </div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:10px;font-weight:700;color:var(--teal);letter-spacing:1.5px;margin-bottom:8px;text-transform:uppercase;">Cohort 1 at a Glance</div>
+          <div style="font-size:11.5px;color:var(--gray-600);line-height:1.65;">
+            All 5 came from gig, part-time, or informal work.<br>
+            All 5 left formal education due to financial or structural barriers — not lack of motivation.<br>
+            Industry interests span hospitality, FMCG, tech, banking, and e-commerce.<br>
+            Natural sales instincts present in every profile — just never given a formal structure.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ BLOCK 6 ═══ -->
+  <div class="block-connector">
+    <div class="block-connector-line"></div>
+    <div class="block-connector-arrow"></div>
+    <span class="block-connector-label">Now the question is ↓</span>
+  </div>
+
+  <div class="block" style="padding-bottom:56px;">
+    <div class="block-header">
+      <div class="block-number">6</div>
+      <div class="block-title-group">
+        <div class="block-label">The Call to Action</div>
+        <h2 class="block-title">The Multiplier Question</h2>
+      </div>
+    </div>
+
+    <div class="multiplier-stat">
+      <div class="multiplier-number">284,700</div>
+      <div class="multiplier-text">
+        <strong>Young Malaysians aged 15–24 were unemployed in 2024.</strong>
+        If one pilot cohort of 5 participants can demonstrate measurable movement from the work trap to structured career placement — what happens when this model runs at 10×? 50×? And who in this room has a piece of the infrastructure needed to make that happen?
+      </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <div class="sticky-zone-header">Your turn. We want to hear from you.</div>
+      <div class="sticky-zone-subtext">Write your answer on a sticky note and place it in the box below the question that resonates with you most.</div>
+    </div>
+
+    <div class="sticky-questions">
+
+      <div class="sticky-question-block">
+        <div class="sticky-question-text"><span class="q-num">1</span>What barrier does this data not show that you see on the ground?</div>
+        <div class="sticky-drop-zone">
+          <div class="sticky-note sticky-y" style="transform:rotate(-2.5deg)">Transport to training is a real barrier...</div>
+          <div class="sticky-note sticky-g" style="transform:rotate(1deg)">Employers need more support too</div>
+          <div class="sticky-drop-hint">paste sticky notes here</div>
+        </div>
+      </div>
+
+      <div class="sticky-question-block">
+        <div class="sticky-question-text"><span class="q-num">2</span>What would your organisation need to support more programmes like this?</div>
+        <div class="sticky-drop-zone">
+          <div class="sticky-note sticky-b" style="transform:rotate(1.5deg)">Clearer data on employer ROI</div>
+          <div class="sticky-note sticky-r" style="transform:rotate(-1deg)">Co-funding models</div>
+          <div class="sticky-drop-hint">paste sticky notes here</div>
+        </div>
+      </div>
+
+      <div class="sticky-question-block">
+        <div class="sticky-question-text"><span class="q-num">3</span>If you could redesign one thing about how Malaysia transitions youth from school to work — what would it be?</div>
+        <div class="sticky-drop-zone">
+          <div class="sticky-note sticky-g" style="transform:rotate(-1.8deg)">Make career guidance mandatory at SPM level</div>
+          <div class="sticky-drop-hint">paste sticky notes here</div>
+        </div>
+      </div>
+
+      <div class="sticky-question-block">
+        <div class="sticky-question-text"><span class="q-num">4</span>Who is not in this room today that should be?</div>
+        <div class="sticky-drop-zone">
+          <div class="sticky-note sticky-y" style="transform:rotate(2deg)">More employers, less government</div>
+          <div class="sticky-note sticky-b" style="transform:rotate(-1.5deg)">Youth themselves!</div>
+          <div class="sticky-drop-hint">paste sticky notes here</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <div class="board-footer">
+    <div class="footer-left">
+      <strong>NextGen Sellers · Cohort 1 · 2025–2026</strong>
+      Biji-biji Initiative / Mereka Innovative Education Sdn Bhd
+    </div>
+    <div class="footer-right">
+      <span class="footer-partner">Citi Foundation</span>
+      <span class="footer-partner">PERKESO</span>
+      <span class="footer-partner">UiTM · FINCO · Google</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
